@@ -140,13 +140,17 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "interval":1,
 	"format-wifi": "{essid}({signalStrength}%) ",
-        // "format-wifi": "{bandwidthTotalBytes:>3}  ", //({essid} {signalStrength}%)
+        // "format-wifi": "{bandwidthTotalBytes:>3} ", //({essid} {signalStrength}%)
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format-wifi": "{ipaddr} {bandwidthTotalBytes:>3}  ",
+        "tooltip-format-wifi": "{ipaddr} {bandwidthTotalBytes:>3} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "󰀦", //Disconnected ⚠
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        //"format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "${HOME}/.config/waybar/scripts/toggleTerminal.sh"
     },
     "pulseaudio#vol": {
         "max-width": 1,
@@ -154,7 +158,7 @@
         "format": "{icon}",
         //"format-bluetooth": "{volume}% {icon} 󰂯", //{format_source}",
         //"format-bluetooth-muted": " {icon} 󰂯", //{format_source}",
-        "format-muted": "<span foreground='red'> </span>",
+        "format-muted": "<span foreground='red'></span>",
         "format-icons": {
             //"headphone": "󰋋 ",
             //"hands-free": "󱡒 ",
@@ -164,17 +168,17 @@
             //"car": " ",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol",
-        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        "on-click": "${HOME}/.config/waybar/scripts/toggleApp.sh pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "justify": "center"
     },
     "pulseaudio#mic": {
-        "max-width": 1,
         "format":"{format_source}",
         "format-source": "",
         "format-source-muted": "<span foreground='red'></span>",
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-
+        "on-click": "${HOME}/.config/waybar/scripts/toggleApp.sh pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "justify": "center"
     },
     "custom/power": {
       "format": "{icon}",

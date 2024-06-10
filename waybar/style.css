@@ -108,10 +108,13 @@ button:hover {
   color: @disabled;
 }
 
-pulseaudio.mic.muted
+#pulseaudio.muted:not(.mic)
 {
+  padding-right: 2px;
   color: @bordercolor;
 }
+
+
 #network.disconnected,
 /*#pulseaudio.muted,*/
 #wireplumber.muted {
